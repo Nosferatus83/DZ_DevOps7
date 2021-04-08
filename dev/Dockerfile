@@ -8,3 +8,4 @@ WORKDIR /home/
 RUN git clone https://github.com/Vikas-tm/samplejavacode.git
 WORKDIR /home/samplejavacode/
 RUN  mvn package
+RUN cp /home/samplejavacode/target/addressbook.war /home/war

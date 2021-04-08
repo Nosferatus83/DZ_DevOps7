@@ -1,5 +1,11 @@
-version: '2'
+version: '3'
 services:
+  dev:
+    build: ./dev
+    links:
+      - prod
+    volumes:
+      - webapp:/home/war
 
   prod:
     image: tomcat:latest
@@ -8,29 +14,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./webapps:/???
-    volumes_from:
-      - dev
-    
+      - webapp:./webapps
     depends_on:
       - dev
-
-  dev:
-    build: php-7.0-fpm-custom
-    environment:
-      - TYPO3_CONTEXT=Development/Docker
-    links:
-      - db
-      - redis
-    volumes:
-      - ./htdocs:/var/www/html
-
-  db:
-    image: mariadb:10.1
-    environment:
-      - MYSQL_ROOT_PASSWORD=secret
-    volumes:
-      - ./mysql:/var/lib/mysql
-
-  redis:
-    image: redis:latest
+      
+volumes:
+  - webapp
