@@ -8,4 +8,7 @@ WORKDIR /home/
 RUN git clone https://github.com/Vikas-tm/samplejavacode.git
 WORKDIR /home/samplejavacode/
 RUN  mvn package
-RUN mkdir /home/war && cp /home/samplejavacode/target/addressbook.war /home/war/
+RUN mkdir /home/war
+WORKDIR /home/war/
+RUN cp /home/samplejavacode/target/addressbook.war . \
+    && cp -r /home/samplejavacode/target/addressbook ./www
