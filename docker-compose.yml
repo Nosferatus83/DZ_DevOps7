@@ -13,7 +13,7 @@ services:
     volumes:
       - webapp:/home/war
     depends_on:
-      - dev
+      - prod
       
 volumes:
   webapp:
