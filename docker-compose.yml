@@ -10,7 +10,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - webapp:/webapps
+      - webapp:./webapps
     depends_on:
       - dev
       
