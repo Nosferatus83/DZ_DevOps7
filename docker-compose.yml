@@ -2,15 +2,11 @@ version: '3'
 services:
   dev:
     build: ./dev
-    links:
-      - prod
     volumes:
       - webapp:/home/war
 
   prod:
     image: tomcat:latest
-    links:
-      - dev
     ports:
       - "8080:8080"
     volumes:
