@@ -1,9 +1,5 @@
 version: '3'
 services:
-  dev:
-    build: ./dev
-    volumes:
-      - webapp:/home/war
 
   prod:
     image: tomcat:latest
@@ -11,6 +7,11 @@ services:
       - "8080:8080"
     volumes:
       - webapp:/webapps
+
+  dev:
+    build: ./dev
+    volumes:
+      - webapp:/home/war
     depends_on:
       - dev
       
